@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "${var.name}-vpc"
+    Name = "${var.project_name}-vpc"
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "${var.name}-igw"
+    Name = "${var.project_name}-igw"
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "public-subnet-1" {
   availability_zone = "${var.region}a"
 
   tags = {
-    Name = "${var.name}-public-subnet-1"
+    Name = "${var.project_name}-public-subnet-1"
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_subnet" "public-subnet-2" {
   availability_zone = "${var.region}b"
 
   tags = {
-    Name = "${var.name}-public-subnet-2"
+    Name = "${var.project_name}-public-subnet-2"
   }
 }
 
@@ -41,7 +41,7 @@ resource "aws_subnet" "public-subnet-3" {
   availability_zone = "${var.region}c"
 
   tags = {
-    Name = "${var.name}-public-subnet-3"
+    Name = "${var.project_name}-public-subnet-3"
   }
 }
 
@@ -54,6 +54,6 @@ resource "aws_route_table" "public-route-table" {
   }
 
   tags = {
-    Name = "${var.name}-route-table"
+    Name = "${var.project_name}-route-table"
   }
 }

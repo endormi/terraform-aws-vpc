@@ -5,7 +5,7 @@
 Variables are inside `terraform.tfvars` file like this:
 
 ```
-name                      = ""
+project_name              = ""
 region                    = ""
 vpc_cidr_block            = ""
 public_subnet1_cidr_block = ""
