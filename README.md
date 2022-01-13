@@ -12,3 +12,27 @@ public_subnet1_cidr_block = ""
 public_subnet2_cidr_block = ""
 public_subnet3_cidr_block = ""
 ```
+
+Initialize:
+
+```
+terraform init
+```
+
+Validate:
+
+```
+terraform validate
+```
+
+Plan:
+
+```
+terraform plan
+```
+
+Apply:
+
+```
+terraform apply
+```
