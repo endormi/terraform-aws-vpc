@@ -57,3 +57,17 @@ resource "aws_route_table" "public-route-table" {
     Name = "${var.project_name}-route-table"
   }
 }
+
+/*
+resource "aws_vpc_peering_connection" "pcx" {
+  peer_owner_id = ${var.owner_id} (Defaults to the account ID the AWS provider is currently connected to.)
+  peer_vpc_id   = aws_vpc.vpc2.id
+  vpc_id        = aws_vpc.vpc.id
+  peer_region   = ${var.region}
+  auto_accept   = true
+
+  tags = {
+    Name = "pcx-vpc-vpc2"
+  }
+}
+*/
