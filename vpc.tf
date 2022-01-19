@@ -15,37 +15,19 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-resource "aws_subnet" "public-subnet-1" {
+resource "aws_subnet" "public_subnet" {
+  count             = "${length(var.public_subnets)}"
+
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "${var.public_subnet1_cidr_block}"
-  availability_zone = "${var.region}a"
+  cidr_block        = "${var.public_subnets[count.index]}"
+  availability_zone = "${var.availability_zones[count.index]}"
 
   tags = {
-    Name = "${var.project_name}-public-subnet-1"
+    Name = "${var.project_name}-public_subnet"
   }
 }
 
-resource "aws_subnet" "public-subnet-2" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "${var.public_subnet2_cidr_block}"
-  availability_zone = "${var.region}b"
-
-  tags = {
-    Name = "${var.project_name}-public-subnet-2"
-  }
-}
-
-resource "aws_subnet" "public-subnet-3" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = "${var.public_subnet3_cidr_block}"
-  availability_zone = "${var.region}c"
-
-  tags = {
-    Name = "${var.project_name}-public-subnet-3"
-  }
-}
-
-resource "aws_route_table" "public-route-table" {
+resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.vpc.id
 
   route {
@@ -54,8 +36,15 @@ resource "aws_route_table" "public-route-table" {
   }
 
   tags = {
-    Name = "${var.project_name}-route-table"
+    Name = "${var.project_name}-public_route_table"
   }
+}
+
+resource "aws_route_table_association" "public_route" {
+  count          = "${length(var.public_subnets)}"
+
+  subnet_id      = "${element(aws_subnet.public_subnet.*.id, count.index)}"
+  route_table_id = aws_route_table.public_route_table.id
 }
 
 /*
