@@ -23,7 +23,7 @@ resource "aws_subnet" "public_subnet" {
   availability_zone = "${var.availability_zones[count.index]}"
 
   tags = {
-    Name = "${var.project_name}-public_subnet"
+    Name = "${var.project_name}-public-subnet"
   }
 }
 
@@ -36,7 +36,7 @@ resource "aws_route_table" "public_route_table" {
   }
 
   tags = {
-    Name = "${var.project_name}-public_route_table"
+    Name = "${var.project_name}-public-route-table"
   }
 }
 
