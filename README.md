@@ -2,7 +2,7 @@
 
 Creates a internet gateway, 3 public subnets, route table and route table association.
 
-I didn't include NAT gateway to this repo, but it's very easy to include.
+I didn't include NAT gateway to this repo, but it's easy to add.
 
 Variables are inside `variables.tf` file like this:
 
