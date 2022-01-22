@@ -1,6 +1,6 @@
 # terraform-aws-vpc
 
-**NOTE**: This is not free. There are costs when running this repository such as. internet gateway (having 1 internet gateway is free, but chances are you haven't removed the default one).
+**NOTE**: This is not free. There are costs when running this project such as. internet gateway (having 1 internet gateway is free, but chances are you haven't removed the default one).
 
 Creates a internet gateway, 3 public subnets, route table and route table association.
 
